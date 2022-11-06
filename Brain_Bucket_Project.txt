@@ -1,0 +1,57 @@
+from selenium import webdriver
+from selenium.webdriver.support.color import Color
+driver = webdriver.Chrome('C:\chromedriver.exe')
+driver.get("https://cleveronly.com/brainbucket/index.php?route=account/login")
+driver.maximize_window()
+logo = driver.find_element_by_xpath("//img[@title='Brainbucket']")
+NewRegistrant_BUTTON = driver.find_element("xpath", "//a[contains(text(), 'Continue')]")
+NewRegistrant_BUTTON.click()
+
+firstname_field = driver.find_element("xpath", "//fieldset/div[2]")
+firstname_field_class = firstname_field.get_attribute("class")
+assert "required" in firstname_field_class
+
+firstname_input = driver.find_element("id", "input-firstname")
+firstname_input.clear()
+firstname_input.send_keys("John")
+
+# November 5 2023, Todd Kaduck
+lastname_field = driver.find_element("xpath", "//fieldset/div[3]")
+lastname_field_class = lastname_field.get_attribute("class")
+assert "required" in lastname_field_class
+
+lastname_input = driver.find_element("id", "input-lastname")
+lastname_input.clear()
+lastname_input.send_keys("Smith")
+
+email_field = driver.find_element("xpath", "//fieldset/div[4]")
+email_field_class = email_field.get_attribute("class")
+assert "required" in email_field_class
+
+email_input = driver.find_element("id", "input-email")
+email_input.clear()
+email_input.send_keys("email@google.com")
+
+telephone_field = driver.find_element("xpath", "//fieldset/div[5]")
+telephone_field_class = telephone_field.get_attribute("class")
+assert "required" in telephone_field_class
+
+telephone_input = driver.find_element("id", "input-telephone")
+telephone_input.clear()
+telephone_input.send_keys("4127654321")
+
+driver.get("https://cleveronly.com/brainbucket/index.php?route=account/login")
+
+email_input = driver.find_element("id", "input-email")
+email_input.clear()
+email_input.send_keys("email@google.com")
+
+password_input = driver.find_element("id", "input-password")
+password_input.clear()
+password_input.send_keys("P@ssword")
+
+login_button = driver.find_element("xpath", "//input[@value='Login']")
+login_button.click()
+
+
+
